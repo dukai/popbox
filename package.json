@@ -1,0 +1,37 @@
+{
+  "name": "popbox",
+  "description": "popbox components.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dukai/popbox",
+  "author": {
+    "name": "dukai",
+    "email": "dukai86@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dukai/popbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dukai/popbox/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/dukai/popbox/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "popbox.js",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": []
+}
