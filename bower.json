@@ -27,7 +27,8 @@
     "requirejs": "^2.2.0",
     "text": "requirejs/text#^2.0.15",
     "dtools": "https://github.com/dukai/dtools.git",
-    "jquery": "2.2.3"
+    "jquery": "2.2.3",
+    "template": "https://github.com/dukai/template.git"
   },
   "resolutions": {
     "jquery": "2.2.3"

@@ -4,6 +4,24 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    less: {
+      dev: {
+        options: {
+          paths: ["less"]
+        },
+        files: [
+          {
+            expand: true,     //Enable dynamic expansion.
+            cwd: 'less/',      //Src matches are relative to this path.
+            src: ['*.less'], //Actual pattern(s) to match.
+            dest: 'css/',   //Destination path prefix.
+            ext: '.css',   //Dest filepaths will have this extension.
+            extDot: 'first'   //Extensions in filenames begin after the first dot
+          },
+        ],
+      },
+    },
+
     nodeunit: {
       files: ['test/**/*_test.js'],
     },
@@ -41,6 +59,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit']);
