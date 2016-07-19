@@ -4,12 +4,18 @@ define(function(require, exports, module){
     var Toast = require('./lib/toast');
     var Confirm = require('./lib/confirm');
 
+    exports.PopBox = PopBox;
+    exports.Alert = Alert;
+    exports.Toast = Toast;
+    exports.Confirm = Confirm;
+
+
 
     var STATIC_TOAST = null;
     /**
      * toast
-     * @param  {string} txt      content to display
-     * @param  {int} interval show time by second
+     * @param  {string} txt  要显示的内容
+     * @param  {int} interval  可选项，为0或者不选时toast将不会自动消失
      * @return {Toast}          Toast
      */
     exports.toast = function(txt, interval){
@@ -17,6 +23,10 @@ define(function(require, exports, module){
         var options = {};
         if(txt){
             options.txt = txt;
+        }
+
+        if(arguments.length  == 1){
+            interval = 0;
         }
 
         if(interval !== undefined && interval !== null){
@@ -38,7 +48,11 @@ define(function(require, exports, module){
 
 
     var STATIC_ALERT = null;
-
+    /**
+     * 模态框
+     * @param  {string} txt 要显示的内容
+     * @return {AlertBox}     AlertBox
+     */
     exports.alert = function(txt){
         if(STATIC_ALERT === null){
             STATIC_ALERT = new Alert({
