@@ -1,5 +1,5 @@
 define(function(require, exports, module){
-    var Popbox = require('./lib/popbox');
+    var PopBox = require('./lib/popbox');
     var Alert = require('./lib/alert');
     var Toast = require('./lib/toast');
     var Confirm = require('./lib/confirm');
@@ -9,6 +9,14 @@ define(function(require, exports, module){
     exports.Toast = Toast;
     exports.Confirm = Confirm;
 
+    // require('text!app/view/popbox/popbox.tmpl');
+
+
+    exports.setTemplate = function(list){
+        if("popbox" in list){
+            PopBox.TEMPLATE = list.popbox;
+        }
+    };
 
 
     var STATIC_TOAST = null;

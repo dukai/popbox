@@ -1,11 +1,11 @@
 requirejs.config({
-	baseUrl: '/test',
+	baseUrl: '/',
   paths: {
-    text: './lib/text/text',
-    dtools: './lib/dtools/tools-1.0.3.min',
-    template: './lib/template/template',
-    jquery: './lib/jquery/dist/jquery.min',
-    popbox: '../popbox.min'
+    text: 'test/lib/text/text',
+    dtools: 'test/lib/dtools/tools-1.0.3.min',
+    template: 'test/lib/template/template',
+    jquery: 'test/lib/jquery/dist/jquery.min',
+    popbox: 'popbox'
   }
 });
 
