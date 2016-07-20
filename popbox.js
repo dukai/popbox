@@ -3,6 +3,7 @@ define(function(require, exports, module){
     var Alert = require('./lib/alert');
     var Toast = require('./lib/toast');
     var Confirm = require('./lib/confirm');
+    var Tmpl = require('template');
 
     exports.PopBox = PopBox;
     exports.Alert = Alert;
@@ -12,11 +13,39 @@ define(function(require, exports, module){
     // require('text!app/view/popbox/popbox.tmpl');
 
 
-    exports.setTemplate = function(list){
+    var setTemplate = exports.setTemplate = function(list){
         if("popbox" in list){
-            PopBox.TEMPLATE = list.popbox;
+            PopBox.TEMPLATE = new Tmpl(list.popbox);
+        }
+        if("alert" in list){
+            Alert.TEMPLATE = new Tmpl(list.alert);
+        }
+        if("confirm" in list){
+            Confirm.TEMPLATE = new Tmpl(list.confirm);
+        }
+        if("toast" in list){
+            Toast.TEMPLATE = new Tmpl(list.toast);
         }
     };
+
+
+    exports.setMobileDefault = function () {
+        setTemplate({
+            popbox: require('text!./lib/view/m/popbox.tmpl'),
+            alert: require('text!./lib/view/m/alert.tmpl'),
+            confirm: require('text!./lib/view/m/confirm.tmpl'),
+            toast: require('text!./lib/view/m/toast.tmpl')
+        })
+    }
+
+    exports.setDesktopDefault = function () {
+        setTemplate({
+            popbox: require('text!./lib/view/pc/popbox.tmpl'),
+            alert: require('text!./lib/view/pc/alert.tmpl'),
+            confirm: require('text!./lib/view/pc/confirm.tmpl'),
+            toast: require('text!./lib/view/pc/toast.tmpl')
+        })
+    }
 
 
     var STATIC_TOAST = null;
