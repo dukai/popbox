@@ -12,7 +12,10 @@ define(function(require, exports, module){
 
     // require('text!app/view/popbox/popbox.tmpl');
 
-
+    /**
+     * 设置模板
+     * @param {plainObject} list 模板列表
+     */
     var setTemplate = exports.setTemplate = function(list){
         if("popbox" in list){
             PopBox.TEMPLATE = new Tmpl(list.popbox);
@@ -28,7 +31,9 @@ define(function(require, exports, module){
         }
     };
 
-
+    /**
+     * 设置移动版默认模板
+     */
     var setMobileDefault = exports.setMobileDefault = function () {
         setTemplate({
             popbox: require('text!./lib/view/m/popbox.tmpl'),
@@ -38,6 +43,9 @@ define(function(require, exports, module){
         })
     }
 
+    /**
+     * 设置桌面版默认模板
+     */
     var setDesktopDefault = exports.setDesktopDefault = function () {
         setTemplate({
             popbox: require('text!./lib/view/pc/popbox.tmpl'),
@@ -48,6 +56,7 @@ define(function(require, exports, module){
     };
 
 
+    //默认使用移动版默认模板
     setMobileDefault();
 
 
@@ -55,7 +64,8 @@ define(function(require, exports, module){
     /**
      * toast
      * @param  {string} txt  要显示的内容
-     * @param  {int} interval  可选项，为0或者不选时toast将不会自动消失
+     * @param  {int|opt} interval  可选项，为0或者不选时toast将不会自动消失
+     * @param  {function|opt} fn  可选项，回调函数，执行完消失后会调用的回调
      * @return {Toast}          Toast
      */
     exports.toast = function(txt, interval, fn){
@@ -111,6 +121,7 @@ define(function(require, exports, module){
     /**
      * 模态框
      * @param  {string} txt 要显示的内容
+     * @param  {function|opt} fn 回调函数
      * @return {AlertBox}     AlertBox
      */
     exports.alert = function(txt, fn){
@@ -136,6 +147,12 @@ define(function(require, exports, module){
     };
 
     var STATIC_CONFIRM = null;
+    /**
+     * 确认提示框
+     * @param  {string}   txt 显示的内容
+     * @param  {Function} fn  回调函数
+     * @return {Confirm}       Confirm
+     */
     exports.confirm = function(txt, fn){
 
         fn = fn ? fn : function(){};
