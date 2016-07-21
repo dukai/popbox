@@ -1,7 +1,8 @@
 ({
   baseUrl: './',
   name: 'popbox',
-  out: "./popbox-" + process.env.npm_package_version + ".min.js",
+  // out: "./popbox-" + process.env.npm_package_version + ".min.js",
+  out: "./popbox.min.js",
   paths: {
     dtools: 'empty:',
     template: 'empty:',

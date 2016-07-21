@@ -21,7 +21,9 @@
     "bower_components",
     "test/lib/",
     "test",
-    "tests"
+    "tests",
+    "build.js",
+    "Gruntfile.js"
   ],
   "dependencies": {
     "requirejs": "^2.2.0",

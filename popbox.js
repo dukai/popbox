@@ -29,7 +29,7 @@ define(function(require, exports, module){
     };
 
 
-    exports.setMobileDefault = function () {
+    var setMobileDefault = exports.setMobileDefault = function () {
         setTemplate({
             popbox: require('text!./lib/view/m/popbox.tmpl'),
             alert: require('text!./lib/view/m/alert.tmpl'),
@@ -38,14 +38,17 @@ define(function(require, exports, module){
         })
     }
 
-    exports.setDesktopDefault = function () {
+    var setDesktopDefault = exports.setDesktopDefault = function () {
         setTemplate({
             popbox: require('text!./lib/view/pc/popbox.tmpl'),
             alert: require('text!./lib/view/pc/alert.tmpl'),
             confirm: require('text!./lib/view/pc/confirm.tmpl'),
             toast: require('text!./lib/view/pc/toast.tmpl')
         })
-    }
+    };
+
+
+    setMobileDefault();
 
 
     var STATIC_TOAST = null;
@@ -55,7 +58,20 @@ define(function(require, exports, module){
      * @param  {int} interval  可选项，为0或者不选时toast将不会自动消失
      * @return {Toast}          Toast
      */
-    exports.toast = function(txt, interval){
+    exports.toast = function(txt, interval, fn){
+
+        if(arguments.length == 3){
+
+        }else if(arguments.length == 2){
+            if(typeof interval == 'function'){
+                fn = interval;
+                interval = null;
+            }
+        }else if(arguments.length === 0){
+            return STATIC_TOAST;
+        }else{
+            
+        }
 
         var options = {};
         if(txt){
@@ -74,6 +90,13 @@ define(function(require, exports, module){
             }
         }
 
+
+        if(undefined !== fn){
+            options.confirmCallback = fn;
+        }else{
+            options.confirmCallback = function(){};
+        }
+
         if(STATIC_TOAST == null){
             STATIC_TOAST = new Toast(options);
         }else{
@@ -90,24 +113,50 @@ define(function(require, exports, module){
      * @param  {string} txt 要显示的内容
      * @return {AlertBox}     AlertBox
      */
-    exports.alert = function(txt){
+    exports.alert = function(txt, fn){
+        fn = fn ? fn : function(){};
         if(STATIC_ALERT === null){
             STATIC_ALERT = new Alert({
                 title: '提醒',
                 confirmTxt: '确定',
-                confirmCallback: null,
+                confirmCallback: fn,
                 content: txt,
                 autoshow: true
             });
         }else{
             STATIC_ALERT.initOpitions({
-                content: txt
+                content: txt,
+                confirmCallback: fn
             });
         }
 
         STATIC_ALERT.show();
 
         return STATIC_ALERT;
-    }
+    };
+
+    var STATIC_CONFIRM = null;
+    exports.confirm = function(txt, fn){
+
+        fn = fn ? fn : function(){};
+        if(STATIC_CONFIRM === null){
+            STATIC_CONFIRM = new Confirm({
+                title: '提醒',
+                confirmTxt: '确定',
+                confirmCallback: fn,
+                content: txt,
+                autoshow: true
+            });
+        }else{
+            STATIC_CONFIRM.initOpitions({
+                content: txt,
+                confirmCallback: fn
+            });
+        }
+
+        STATIC_CONFIRM.show();
+
+        return STATIC_CONFIRM;
+    };
 
 });

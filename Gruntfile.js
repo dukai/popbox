@@ -1,9 +1,11 @@
 'use strict';
 
 module.exports = function(grunt) {
+  var version = JSON.parse(grunt.file.read('./package.json')).version;
 
   // Project configuration.
   grunt.initConfig({
+    version: version,
     less: {
       dev: {
         options: {
@@ -52,7 +54,28 @@ module.exports = function(grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
       },
+      less: {
+        files: 'less/*.less',
+        tasks: ['less']
+      }
     },
+
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: './',
+          name: 'popbox',
+          out: "./popbox-<%= version %>.min.js",
+          paths: {
+            dtools: 'empty:',
+            template: 'empty:',
+            jquery: 'empty:',
+            text: './test/lib/text/text',
+          },
+          exclude: ['text']
+        }
+      }
+    }
   });
 
   // These plugins provide necessary tasks.
@@ -60,6 +83,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit']);
