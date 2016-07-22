@@ -88,7 +88,7 @@ define(function(require, exports, module){
             options.txt = txt;
         }
 
-        if(arguments.length  == 1){
+        if(arguments.length  == 1 && !interval){
             interval = 0;
         }
 
@@ -96,6 +96,7 @@ define(function(require, exports, module){
             if(interval == 0){
                 options.autoHide = false;
             }else{
+                options.autoHide = true;
                 options.interval = interval;
             }
         }
