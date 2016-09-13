@@ -157,20 +157,13 @@ define(function(require, exports, module){
     exports.confirm = function(txt, fn){
 
         fn = fn ? fn : function(){};
-        if(STATIC_CONFIRM === null){
-            STATIC_CONFIRM = new Confirm({
-                title: '提醒',
-                confirmTxt: '确定',
-                confirmCallback: fn,
-                content: txt,
-                autoshow: true
-            });
-        }else{
-            STATIC_CONFIRM.initOpitions({
-                content: txt,
-                confirmCallback: fn
-            });
-        }
+        STATIC_CONFIRM = new Confirm({
+            title: '提醒',
+            confirmTxt: '确定',
+            confirmCallback: fn,
+            content: txt,
+            autoshow: true
+        });
 
         STATIC_CONFIRM.show();
 
