@@ -5,9 +5,9 @@
 
 // left
 .slide-in-left {
-  animation: inLeft @animationInterval;
+  animation: slideInLeft @animationInterval;
 }
-.keyframes(inLeft, {
+.keyframes(slideInLeft, {
     0% {
         opacity: 0;
         -webkit-transform: translate3d(-100%, 0, 0);
@@ -20,43 +20,49 @@
     }
 });
 
+.slide-out-left{animation: slideOutLeft @animationInterval;}
+.keyframes(slideOutLeft, {
+    0%{opacity:1}
+    100%{opacity:0;-webkit-transform:translate3d(-100%,0,0);-ms-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}
+});
+
 // right
-.slide-in-right{animation: fadeInRight @animationInterval;}
-.keyframes(inLeft, {
+.slide-in-right{animation: slideInRight @animationInterval;}
+.keyframes(slideInRight, {
     0%{
         opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);}
     100%{
         opacity:1;-webkit-transform:none;transform:none;}
 });
 
-.slide-out-right{animation: fadeOutRight @animationInterval;}
-.keyframes(fadeOutRight, {
+.slide-out-right{animation: slideOutRight @animationInterval;}
+.keyframes(slideOutRight, {
     0%{opacity:1;}
     100%{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);}
 });
 
 // up
-.slide-in-up{animation: fadeInUp @animationInterval;}
-.keyframes(fadeInUp, {
+.slide-in-up{animation: slideInUp @animationInterval;}
+.keyframes(slideInUp, {
     0%{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);}
     100%{opacity:1;-webkit-transform:none;}
 });
 
-.slide-out-up{animation: fadeOutUp @animationInterval;}
-.keyframes (fadeOutUp, {
+.slide-out-up{animation: slideOutUp @animationInterval;}
+.keyframes (slideOutUp, {
     0%{opacity:1;}
     100%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);}
 });
 
 // down
-.slide-in-down{animation: fadeInDown @animationInterval;}
-.keyframes(fadeInDown, {
+.slide-in-down{animation: slideInDown @animationInterval;}
+.keyframes(slideInDown, {
     0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);}
     100%{opacity:1;-webkit-transform:none;transform:none;}
 });
 
-.slide-out-down{animation: fadeOutDown @animationInterval;}
-.keyframes(fadeOutDown, {
+.slide-out-down{animation: slideOutDown @animationInterval;}
+.keyframes(slideOutDown, {
     0%{opacity:1;}
     100%{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);
     }
