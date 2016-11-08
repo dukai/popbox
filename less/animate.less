@@ -1,0 +1,78 @@
+@import "./lib/prefixer";
+
+// animation
+@animationInterval:.2s;
+
+// left
+.slide-in-left {
+  animation: inLeft @animationInterval;
+}
+.keyframes(inLeft, {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+});
+
+// right
+.slide-in-right{animation: fadeInRight @animationInterval;}
+.keyframes(inLeft, {
+    0%{
+        opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);}
+    100%{
+        opacity:1;-webkit-transform:none;transform:none;}
+});
+
+.slide-out-right{animation: fadeOutRight @animationInterval;}
+.keyframes(fadeOutRight, {
+    0%{opacity:1;}
+    100%{opacity:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0);}
+});
+
+// up
+.slide-in-up{animation: fadeInUp @animationInterval;}
+.keyframes(fadeInUp, {
+    0%{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);}
+    100%{opacity:1;-webkit-transform:none;}
+});
+
+.slide-out-up{animation: fadeOutUp @animationInterval;}
+.keyframes (fadeOutUp, {
+    0%{opacity:1;}
+    100%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);}
+});
+
+// down
+.slide-in-down{animation: fadeInDown @animationInterval;}
+.keyframes(fadeInDown, {
+    0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);}
+    100%{opacity:1;-webkit-transform:none;transform:none;}
+});
+
+.slide-out-down{animation: fadeOutDown @animationInterval;}
+.keyframes(fadeOutDown, {
+    0%{opacity:1;}
+    100%{opacity:0;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);
+    }
+});
+
+// zoomIn
+.zoom-in{animation: zoomIn @animationInterval;}
+.keyframes(zoomIn, {
+    0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3);}
+    50%{opacity:1;}
+});
+
+// zoomOut
+.zoom-out{animation: zoomOut @animationInterval;}
+.keyframes(zoomOut, {
+    0%{opacity:1;}
+    50%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3);}
+    100%{opacity:0;}
+});
