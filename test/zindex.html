@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>z-index</title>
+<link rel="stylesheet" type="text/css" href="../css/popbox-m.css">
+</head>
+<body>
+<script src="./lib/requirejs/require.js"></script>
+<script type="text/javascript">
+requirejs.config({
+    baseUrl: '/',
+    paths: {
+        text: 'test/lib/text/text',
+        dtools: 'test/lib/dtools/tools-1.0.3.min',
+        template: 'test/lib/template/template',
+        jquery: 'test/lib/jquery/dist/jquery.min',
+        popbox: 'popbox'
+    }
+});
+
+require(['popbox'], function(popbox){
+
+    new popbox.Confirm({
+            title: '提醒',
+            confirmTxt: '确定',
+            content: 'z-index test<br>z-index test<br>z-index test<br>z-index test<br>z-index test<br>z-index test<br>',
+            autoshow: true,
+            standaloneCover: true
+        }).show();
+    new popbox.Confirm({
+            title: '提醒',
+            confirmTxt: '确定',
+            content: 'z-index test<br>',
+            autoshow: true,
+            standaloneCover: true
+        }).show();
+});
+</script>
+</body>
+</html>
